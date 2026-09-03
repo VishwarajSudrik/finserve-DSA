@@ -13,7 +13,7 @@ interface AuthContextType {
 const DEMO_PERSONAS: Record<UserRole, User> = {
   customer: {
     id: 'cust-101',
-    name: 'Rahul Mehta (Customer)',
+    name: 'Customer Login',
     email: 'rahul.mehta.demo@example.com',
     mobile: '9820123456',
     role: 'customer',
@@ -32,7 +32,7 @@ const DEMO_PERSONAS: Record<UserRole, User> = {
   },
   relationship_manager: {
     id: 'rm-01',
-    name: 'Vikram Malhotra (RM)',
+    name: 'RM LOGIN ',
     email: 'vikram.rm@finserve-dsa.example.com',
     mobile: '9876500111',
     role: 'relationship_manager',

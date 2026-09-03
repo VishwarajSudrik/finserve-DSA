@@ -6,10 +6,17 @@ import {
   ChevronDown,
   Shield,
   PhoneCall,
-  ArrowRight
+  ArrowRight,
+  User,
+  Briefcase,
+  UserCheck,
+  ShieldCheck,
+  LogIn
 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 import { Drawer } from '../components/common/Drawer';
+import { PersonaSwitcher } from '../components/common/PersonaSwitcher';
+import { useAuth } from '../app/providers/AuthContext';
 
 export const PublicLayout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,6 +25,7 @@ export const PublicLayout: React.FC = () => {
   const [calculatorsDropdown, setCalculatorsDropdown] = useState(false);
   const [ecosystemDropdown, setEcosystemDropdown] = useState(false);
 
+  const { setPersona } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -165,6 +173,15 @@ export const PublicLayout: React.FC = () => {
             >
               Check Eligibility
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/login')}
+              leftIcon={<LogIn className="w-4 h-4 text-blue-600" />}
+              className="border-slate-300 text-slate-900 hover:bg-slate-100 font-extrabold shadow-xs"
+            >
+              Login
+            </Button>
           </div>
 
           {/* Mobile Menu Icon */}
@@ -216,6 +233,36 @@ export const PublicLayout: React.FC = () => {
             </div>
           </div>
 
+          <div className="space-y-2 pt-2 border-t border-slate-100">
+            <p className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Portal Logins</p>
+            <div className="pl-3 space-y-2 text-slate-700 font-medium">
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); setPersona('customer'); navigate('/customer/dashboard'); }}
+                className="w-full text-left py-1 text-blue-600 font-bold flex items-center gap-2 cursor-pointer"
+              >
+                <User className="w-4 h-4" /> Borrower Customer Login
+              </button>
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); setPersona('dsa_partner'); navigate('/partner/dashboard'); }}
+                className="w-full text-left py-1 text-emerald-600 font-bold flex items-center gap-2 cursor-pointer"
+              >
+                <Briefcase className="w-4 h-4" /> DSA Partner Login
+              </button>
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); setPersona('relationship_manager'); navigate('/crm/leads'); }}
+                className="w-full text-left py-1 text-indigo-600 font-bold flex items-center gap-2 cursor-pointer"
+              >
+                <UserCheck className="w-4 h-4" /> Relationship Manager Login
+              </button>
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); setPersona('admin'); navigate('/crm/dashboard'); }}
+                className="w-full text-left py-1 text-purple-600 font-bold flex items-center gap-2 cursor-pointer"
+              >
+                <ShieldCheck className="w-4 h-4" /> Enterprise Admin Login
+              </button>
+            </div>
+          </div>
+
           <div className="space-y-3 pt-2 border-t border-slate-100 text-slate-800">
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-1.5 text-blue-600 font-bold">Home</Link>
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-1.5 font-bold text-slate-900">About Us</Link>
@@ -224,7 +271,10 @@ export const PublicLayout: React.FC = () => {
           </div>
 
           <div className="space-y-3 pt-4 border-t border-slate-100">
-            <Button className="w-full" variant="gradient" onClick={() => { setIsMobileMenuOpen(false); navigate('/check-eligibility'); }}>
+            <Button className="w-full font-bold" variant="outline" onClick={() => { setIsMobileMenuOpen(false); navigate('/login'); }} leftIcon={<LogIn className="w-4 h-4 text-blue-600" />}>
+              Login to Portal
+            </Button>
+            <Button className="w-full font-extrabold" variant="gradient" onClick={() => { setIsMobileMenuOpen(false); navigate('/check-eligibility'); }}>
               Check Eligibility
             </Button>
             <Button className="w-full" variant="outline" onClick={() => { setIsMobileMenuOpen(false); navigate('/partners/become-a-partner'); }}>
@@ -313,6 +363,7 @@ export const PublicLayout: React.FC = () => {
           </div>
         </div>
       </footer>
+      <PersonaSwitcher />
     </div>
   );
 };

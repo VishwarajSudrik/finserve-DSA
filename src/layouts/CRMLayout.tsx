@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { Input } from '../components/common/Input';
 import { Drawer } from '../components/common/Drawer';
+import { PersonaSwitcher } from '../components/common/PersonaSwitcher';
 
 export const CRMLayout: React.FC = () => {
   const { user, logout } = useAuth();
@@ -180,6 +181,7 @@ export const CRMLayout: React.FC = () => {
           })}
         </nav>
       </Drawer>
+      <PersonaSwitcher />
     </div>
   );
 };

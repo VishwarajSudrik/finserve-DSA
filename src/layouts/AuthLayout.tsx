@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { Building2, ShieldCheck } from 'lucide-react';
+import { PersonaSwitcher } from '../components/common/PersonaSwitcher';
 
 export const AuthLayout: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ export const AuthLayout: React.FC = () => {
       <div className="text-center text-xs text-slate-500 py-4">
         <p>© 2026 FinServe Technologies. Frontend Demo Architecture.</p>
       </div>
+      <PersonaSwitcher />
     </div>
   );
 };

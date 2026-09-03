@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/common/Button';
 import { Drawer } from '../components/common/Drawer';
+import { PersonaSwitcher } from '../components/common/PersonaSwitcher';
 
 export const PartnerLayout: React.FC = () => {
   const { logout } = useAuth();
@@ -232,6 +233,7 @@ export const PartnerLayout: React.FC = () => {
           <span>Profile</span>
         </Link>
       </nav>
+      <PersonaSwitcher />
     </div>
   );
 };

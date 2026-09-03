@@ -15,6 +15,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { Drawer } from '../components/common/Drawer';
+import { PersonaSwitcher } from '../components/common/PersonaSwitcher';
 
 export const CustomerLayout: React.FC = () => {
   const { user, logout } = useAuth();
@@ -207,6 +208,7 @@ export const CustomerLayout: React.FC = () => {
           <span>Profile</span>
         </Link>
       </nav>
+      <PersonaSwitcher />
     </div>
   );
 };
